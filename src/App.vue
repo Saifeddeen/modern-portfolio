@@ -1,7 +1,14 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <HelloWorld />
+  <RouterView />
 </template>
+
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useAppStore } from '@/stores/app'
+
+const appStore = useAppStore()
+
+onMounted(() => {
+  appStore.initLocale()
+})
+</script>

@@ -1,1 +1,14 @@
-{}
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "projects": "Projects",
+        "contact": "Contact",
+        "cv": "Download CV"
+    },
+    "footer": {
+        "rights": "All rights reserved.",
+        "contact": "Contact Info",
+        "follow": "Follow Me"
+    }
+}

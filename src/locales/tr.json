@@ -1,1 +1,14 @@
-{}
+{
+    "nav": {
+        "home": "Ana Sayfa",
+        "services": "Hizmetler",
+        "projects": "Projeler",
+        "contact": "İletişim",
+        "cv": "CV İndir"
+    },
+    "footer": {
+        "rights": "Tüm hakları saklıdır.",
+        "contact": "İletişim Bilgileri",
+        "follow": "Beni Takip Et"
+    }
+}
