@@ -1,0 +1,103 @@
+# Software Engineer Portfolio - Frontend
+
+A modern, fully responsive, and internationalized portfolio website for a software engineer and web developer. Built with Vue 3, TypeScript, and TailwindCSS, designed to integrate seamlessly with a Laravel API backend.
+
+## ✨ Features
+
+- **Vue 3 Composition API**: Modern, reactive, and maintainable codebase using `<script setup>`.
+- **TypeScript**: Strict typing for robust development.
+- **TailwindCSS**: Utility-first CSS framework for rapid, responsive UI development with a custom naval/navy theme.
+- **Internationalization (i18n)**: Full support for English (EN), Arabic (AR), and Turkish (TR) with automatic RTL/LTR layout switching.
+- **State Management**: Pinia stores for global state and API data caching.
+- **Routing**: Vue Router 5 for seamless Single Page Application (SPA) navigation.
+- **API Ready**: Pre-configured Axios wrapper with interceptors ready to consume Laravel APIs.
+- **Modern UI Components**: Built with Headless UI, VueUse, and Iconify for accessible and highly customizable elements.
+- **Responsive Design**: Mobile-first approach ensuring perfect display on all devices.
+
+## 🛠️ Tech Stack
+
+- **Framework**: Vue 3.x
+- **Build Tool**: Vite
+- **Language**: TypeScript
+- **Styling**: TailwindCSS 3.4.x
+- **Routing**: Vue Router 5.x
+- **State Management**: Pinia
+- **HTTP Client**: Axios 1.20.x
+- **i18n**: Vue I18n 11.x
+- **UI/Icons**: Headless UI, VueUse, Iconify
+
+## 📦 Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+- [Node.js](https://nodejs.org/) (v18.x or higher recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+## 🚀 Installation & Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/your-portfolio-frontend.git
+   cd your-portfolio-frontend
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Create a `.env` file in the root directory and add your backend API URL:
+   ```env
+   VITE_API_URL=http://localhost:8000/api
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   The application will be available at `http://localhost:5173`.
+
+## 📜 Available Scripts
+
+- `npm run dev`: Starts the Vite development server with hot-module replacement (HMR).
+- `npm run build`: Compiles and minifies for production to the `dist` folder.
+- `npm run preview`: Previews the production build locally.
+- `npm run type-check`: Runs TypeScript type checking without emitting files.
+
+## 📁 Project Structure
+
+```text
+src/
+├── assets/         # Static assets (images, fonts)
+├── components/     # Reusable UI and layout components
+│   ├── layout/     # Navbar, Footer
+│   └── ui/         # Buttons, Cards, Language Switcher, etc.
+├── composables/    # Custom Vue hooks (e.g., useApi)
+├── layouts/        # Main layout wrapper (DefaultLayout.vue)
+├── locales/        # i18n translation files (en.json, ar.json, tr.json)
+├── router/         # Vue Router configuration
+├── stores/         # Pinia state management stores
+├── types/          # TypeScript interfaces and types
+├── views/          # Page-level components (Home, Projects, Contact)
+├── App.vue         # Root component
+├── main.ts         # App entry point
+└── style.css       # Global TailwindCSS styles
+```
+
+## 🌍 Internationalization (i18n)
+
+The app supports English, Arabic, and Turkish. 
+- Translations are stored in `src/locales/*.json`.
+- The app automatically handles RTL (Right-to-Left) layout switching when Arabic is selected.
+- The backend API is expected to return localized data based on the `Accept-Language` header sent by the frontend.
+
+## 🔌 Backend Integration
+
+This frontend is designed to work independently from a Laravel API. 
+- API calls are managed via a centralized Axios instance found in `src/composables/useApi.ts`.
+- Base URL and timeout configurations are handled via environment variables.
+- Expected data formats from the backend are defined in `src/types/`.
+
+---
+
+Made with ❤️ using Vue 3 & TailwindCSS.
