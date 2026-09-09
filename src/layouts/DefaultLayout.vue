@@ -2,7 +2,8 @@
     <div class="min-h-screen flex flex-col bg-white-500 text-prussian_blue-500">
         <AppNavbar />
 
-        <main class="flex-grow container mx-auto px-4 py-8">
+        <!-- Removed container and py-8 from here -->
+        <main class="flex-grow">
             <RouterView />
         </main>
 
@@ -12,6 +13,6 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AppNavbar from '@/components/layout/AppNavBar.vue'
+import AppNavbar from '@/components/layout/AppNavbar.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
 </script>

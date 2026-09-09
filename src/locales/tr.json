@@ -4,11 +4,39 @@
         "services": "Hizmetler",
         "projects": "Projeler",
         "contact": "İletişim",
-        "cv": "CV İndir"
+        "cv": "CV'yi İndir"
     },
     "footer": {
         "rights": "Tüm hakları saklıdır.",
         "contact": "İletişim Bilgileri",
         "follow": "Beni Takip Et"
+    },
+    "hero": {
+        "badge": "İşe Uygun",
+        "greeting": "Merhaba, ben",
+        "cta_projects": "Çalışmalarımı Gör",
+        "cta_contact": "Bana Ulaşın"
+    },
+    "services": {
+        "title": "Ne Yapıyorum",
+        "subtitle": "Dijital fikirlerinizi hayata geçirmek için özel professional hizmetler."
+    },
+    "top_projects": {
+        "title": "Öne Çıkan İşler",
+        "subtitle": "En iyi son projelerimden bir seçki.",
+        "view_details": "Detayları Gör"
+    },
+    "skills": {
+        "title": "Teknoloji Yığını ve Beceriler",
+        "subtitle": "Sağlam uygulamalar oluşturmak için kullandığım araçlar ve teknolojiler."
+    },
+    "skills_marquee": {
+        "title": "Teknoloji Yığını ve Beceriler",
+        "subtitle": "Sağlam uygulamalar oluşturmak için kullandığım araçlar ve teknolojiler."
+    },
+    "cta": {
+        "title": "Bir projeniz mi var?",
+        "subtitle": "Gelin birlikte harika bir şey inşa edelim. Freelance projeler ve tam zamanlı pozisyonlar için hazırım.",
+        "button_text": "İletişime Geç"
     }
 }

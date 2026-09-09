@@ -1,7 +1,14 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
 const routes: RouteRecordRaw[] = [
-    { path: '/', name: 'home', component: () => import('@/views/HomeView.vue') },
+    {
+        path: '/',
+        component: DefaultLayout,
+        children: [
+            { path: '', name: 'home', component: () => import('@/views/HomeView.vue') }
+        ]
+    }
 ]
 
 const router = createRouter({

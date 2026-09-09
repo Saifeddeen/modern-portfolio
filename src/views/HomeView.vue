@@ -1,11 +1,17 @@
-<script setup lang="ts">
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
-
-
-</script>
-
 <template>
-    <DefaultLayout>
-        <h1>Home</h1>
-    </DefaultLayout>
+    <div class="pb-16">
+        <HeroSection />
+        <ServicesSection />
+        <TopProjectsSlider />
+        <SkillsMarquee />
+        <CallToActionSection />
+    </div>
 </template>
+
+<script setup lang="ts">
+import HeroSection from '@/components/home/HeroSection.vue'
+import ServicesSection from '@/components/home/ServicesSection.vue'
+import TopProjectsSlider from '@/components/home/TopProjectsSlider.vue'
+import SkillsMarquee from '@/components/home/SkillsMarquee.vue'
+import CallToActionSection from '@/components/home/CallToActionSection.vue'
+</script>

@@ -10,5 +10,33 @@
         "rights": "All rights reserved.",
         "contact": "Contact Info",
         "follow": "Follow Me"
+    },
+    "hero": {
+        "badge": "Available for Work",
+        "greeting": "Hi, I'm",
+        "cta_projects": "View My Work",
+        "cta_contact": "Get in Touch"
+    },
+    "services": {
+        "title": "What I Do",
+        "subtitle": "Professional services tailored to bring your digital ideas to life."
+    },
+    "top_projects": {
+        "title": "Featured Work",
+        "subtitle": "A selection of my best recent projects.",
+        "view_details": "View Details"
+    },
+    "skills": {
+        "title": "Tech Stack & Skills",
+        "subtitle": "Tools and technologies I use to build robust applications."
+    },
+    "skills_marquee": {
+        "title": "Tech Stack & Skills",
+        "subtitle": "Tools and technologies I use to build robust applications."
+    },
+    "cta": {
+        "title": "Have a project in mind?",
+        "subtitle": "Let's collaborate and build something amazing together. I'm available for freelance projects and full-time positions.",
+        "button_text": "Get in Touch"
     }
 }

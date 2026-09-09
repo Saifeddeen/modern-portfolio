@@ -1,5 +1,5 @@
 <template>
-    <header class="sticky top-0 z-40 bg-prussian_blue-500/95 backdrop-blur border-b border-deep_navy-600">
+    <header class="sticky top-0 z-40 bg-prussian_blue-500/95 backdrop-blur">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <!-- Logo -->
             <RouterLink to="/" class="text-white-500 font-bold text-xl">
