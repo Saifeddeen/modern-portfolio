@@ -4,9 +4,11 @@
 
             <!-- Copyrights & Title -->
             <div>
-                <h3 class="text-xl font-bold mb-4 text-white-500">{{ generalStore.data.title }}</h3>
+                <!-- Replace the Footer title in AppFooter.vue -->
+                <h3 class="text-xl font-bold mb-4 text-white-500">{{ generalStore.settings?.title || 'Portfolio' }}</h3>
                 <p class="text-sm text-gray-400">
-                    &copy; {{ copyrightText }} {{ generalStore.data.title }}. {{ t('footer.rights') }}
+                    &copy; {{ copyrightText }} {{ generalStore.settings?.title || 'Portfolio' }}. {{ t('footer.rights')
+                    }}
                 </p>
             </div>
 
@@ -48,12 +50,12 @@
 import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
-import { useGeneralDataStore } from '@/stores/generalDataStore'
+import { useGeneralStore } from '@/stores/generalDataStore'
 import { useSocialLinksStore } from '@/stores/socialLinksStore'
 import { useContactStore } from '@/stores/contactStore'
 
 const { t } = useI18n()
-const generalStore = useGeneralDataStore()
+const generalStore = useGeneralStore()
 const socialStore = useSocialLinksStore()
 const contactStore = useContactStore()
 

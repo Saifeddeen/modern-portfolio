@@ -1,13 +1,28 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { GeneralData } from '@/types/general'
+import type { SiteSettings } from '@/types/general'
+import api from '@/composables/useApi'
 
-export const useGeneralDataStore = defineStore('generalData', () => {
-  const data = ref<GeneralData>({
-    logo: 'DevPortfolio',
-    title: 'John Doe',
-    cv_link: 'https://example.com/cv.pdf'
-  })
+export const useGeneralStore = defineStore('generalData', () => {
+  const settings = ref<SiteSettings | null>(null)
+  const isLoading = ref<boolean>(false)
+  const error = ref<string | null>(null)
 
-  return { data }
+  async function fetchSettings() {
+    isLoading.value = true
+    error.value = null
+    try {
+      const response = await api.get('/settings')
+      if (response.data.status === 'success' && response.data.data) {
+        settings.value = response.data.data
+      }
+    } catch (err: any) {
+      error.value = err.displayMessage || 'Failed to load site settings.'
+      console.error(error.value)
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  return { settings, isLoading, error, fetchSettings }
 })

@@ -28,20 +28,20 @@
                         {{ t('hero.greeting') }} <br class="hidden md:block" />
                         <span
                             class="bg-gradient-to-r from-cerulean-700 via-cerulean-500 to-yale-blue-700 bg-clip-text text-transparent">
-                            {{ hero.person_name }}
+                            {{ generalStore.settings?.name || 'Loading...' }}
                         </span>
                     </h1>
 
                     <p class="text-xl md:text-2xl text-cerulean-700 mb-6 font-light">
-                        {{ hero.job_title }}
+                        {{ generalStore.settings?.job_title || 'Developer' }}
                     </p>
 
-                    <p class="text-gray-400 max-w-xl mx-auto md:mx-0 mb-10 text-lg leading-relaxed">
-                        {{ hero.bio }}
+                    <p class="text-gray-400 mx-auto md:mx-0 mb-10 text-lg leading-relaxed text-justify">
+                        {{ generalStore.settings?.bio || '' }}
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                        <RouterLink :to="hero.cta_link"
+                        <RouterLink to="/projects"
                             class="px-8 py-4 bg-cerulean-500 hover:bg-cerulean-600 text-white-500 font-medium rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-cerulean-500/20">
                             {{ t('hero.cta_projects') }}
                         </RouterLink>
@@ -52,18 +52,15 @@
                     </div>
                 </div>
 
-                <!-- Simplified Modern Profile Container -->
-                <div class="flex-shrink-0 mb-10 md:mb-0" v-if="hero.profile_image">
+                <!-- Profile Image -->
+                <div class="flex-shrink-0 mb-10 md:mb-0" v-if="generalStore.settings?.avatar">
                     <div class="relative group w-72 h-72 md:w-96 md:h-96">
-                        <!-- Soft Glow Behind Image -->
                         <div
                             class="absolute -inset-4 bg-cerulean-500/20 rounded-full blur-2xl opacity-50 group-hover:opacity-80 transition-opacity duration-500">
                         </div>
-
-                        <!-- Clean Image with Subtle Ring -->
                         <div
                             class="relative w-full h-full rounded-full overflow-hidden shadow-2xl ring-1 ring-white-500/10">
-                            <img :src="hero.profile_image" alt="Profile"
+                            <img :src="generalStore.settings.avatar" alt="Profile"
                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                         </div>
                     </div>
@@ -75,9 +72,9 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useHomeStore } from '@/stores/homeStore'
 import { RouterLink } from 'vue-router'
+import { useGeneralStore } from '@/stores/generalDataStore' // Updated import
 
 const { t } = useI18n()
-const { hero } = useHomeStore()
+const generalStore = useGeneralStore() // Using generalStore
 </script>

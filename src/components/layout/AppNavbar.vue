@@ -2,8 +2,10 @@
     <header class="sticky top-0 z-40 bg-prussian_blue-500/95 backdrop-blur">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <!-- Logo -->
-            <RouterLink to="/" class="text-white-500 font-bold text-xl">
-                {{ generalStore.data.logo }}
+            <RouterLink to="/" class="flex items-center gap-2 text-white-500 font-bold text-xl">
+                <img v-if="generalStore.settings?.logo" :src="generalStore.settings.logo" alt="Logo"
+                    class="h-8 w-auto" />
+                <span>{{ generalStore.settings?.title || 'Portfolio' }}</span>
             </RouterLink>
 
             <!-- Desktop Menu -->
@@ -14,8 +16,8 @@
                     </RouterLink>
                 </li>
 
-                <li v-if="generalStore.data.cv_link">
-                    <a :href="generalStore.data.cv_link" target="_blank" rel="noopener noreferrer"
+                <li v-if="generalStore.settings?.cv_link">
+                    <a :href="generalStore.settings.cv_link" target="_blank" rel="noopener noreferrer"
                         class="bg-cerulean-500 hover:bg-cerulean-600 text-white-500 px-4 py-2 rounded-md transition-colors text-sm font-medium">
                         {{ t('nav.cv') }}
                     </a>
@@ -44,8 +46,8 @@
                             {{ t(link.key) }}
                         </RouterLink>
                     </li>
-                    <li v-if="generalStore.data.cv_link" @click="isMenuOpen = false">
-                        <a :href="generalStore.data.cv_link" target="_blank" rel="noopener noreferrer"
+                    <li v-if="generalStore.settings?.cv_link" @click="isMenuOpen = false">
+                        <a :href="generalStore.settings?.cv_link" target="_blank" rel="noopener noreferrer"
                             class="block py-2 text-cerulean-700 font-medium">
                             {{ t('nav.cv') }}
                         </a>
@@ -62,10 +64,10 @@ import { RouterLink } from 'vue-router'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
-import { useGeneralDataStore } from '@/stores/generalDataStore'
+import { useGeneralStore } from '@/stores/generalDataStore'
 
 const { t } = useI18n()
-const generalStore = useGeneralDataStore()
+const generalStore = useGeneralStore()
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => { isMenuOpen.value = !isMenuOpen.value }

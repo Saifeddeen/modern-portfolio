@@ -1,25 +1,56 @@
-import axios, { type AxiosInstance, type InternalAxiosRequestConfig } from 'axios'
+import axios, { type AxiosInstance, type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
+import type { ApiResponse } from '@/types/general'
+import { useAppStore } from '@/stores/app'
 
 const api: AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL ?? '/api',
+    // Read from the specific VITE_BACKEND_API_URL variable
+    baseURL: import.meta.env.VITE_BACKEND_API_URL ?? '/api',
     timeout: 15000,
-    headers: { Accept: 'application/json' },
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    },
 })
 
-// Attach auth token from wherever you store it (Pinia / localStorage)
+// Request Interceptor: Attach Auth Token and Language
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem('token')
-    if (token) config.headers.Authorization = `Bearer ${token}`
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
+
+    // Attach Accept-Language header
+    const appStore = useAppStore()
+    config.headers['Accept-Language'] = appStore.locale
+
     return config
 })
 
-// Normalize errors + handle 401 globally
+// Response Interceptor: Unwrap data and handle standard errors
 api.interceptors.response.use(
-    (res) => res,
+    (response: AxiosResponse<ApiResponse<unknown>>) => {
+        if (response.data.status === 'error') {
+            return Promise.reject(new Error(response.data.message || 'Unknown API error'))
+        }
+        return response
+    },
     (error) => {
         if (error.response?.status === 401) {
-            // e.g. redirect to login, clear store
+            localStorage.removeItem('token')
         }
+
+        let errorMessage = 'An unexpected network error occurred.'
+        if (error.response?.data?.message) {
+            errorMessage = error.response.data.message
+        } else if (error.message) {
+            errorMessage = error.message
+        }
+
+        if (error.response?.data?.errors) {
+            error.validationErrors = error.response.data.errors
+        }
+
+        error.displayMessage = errorMessage
         return Promise.reject(error)
     },
 )
