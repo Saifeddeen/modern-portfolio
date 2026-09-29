@@ -16,10 +16,15 @@
                 <!-- Track 1 -->
                 <div class="marquee-group">
                     <div v-for="(skill, index) in loopedSkills" :key="`t1-${index}`" class="skill-card">
-                        <Icon :icon="skill.logo" class="w-12 h-12 mb-4 text-deep_navy-600" />
+                        <!-- Icon Wrapper for uniform sizing -->
+                        <div class="icon-wrapper mb-4 text-deep_navy-600">
+                            <Icon v-if="skill.vue_iconify" :icon="skill.vue_iconify" class="custom-icon" />
+                            <div v-else-if="skill.svg_icon" class="raw-svg-container" v-html="skill.svg_icon"></div>
+                            <Icon v-else icon="lucide:code" class="custom-icon" />
+                        </div>
 
                         <h3 class="font-semibold text-prussian_blue-500 mb-1">
-                            {{ skill.title }}
+                            {{ skill.name }}
                         </h3>
 
                         <p class="text-xs text-gray-500 text-center">
@@ -31,10 +36,14 @@
                 <!-- Track 2 -->
                 <div class="marquee-group" aria-hidden="true">
                     <div v-for="(skill, index) in loopedSkills" :key="`t2-${index}`" class="skill-card">
-                        <Icon :icon="skill.logo" class="w-12 h-12 mb-4 text-deep_navy-600" />
+                        <div class="icon-wrapper mb-4 text-deep_navy-600">
+                            <Icon v-if="skill.vue_iconify" :icon="skill.vue_iconify" class="custom-icon" />
+                            <div v-else-if="skill.svg_icon" class="raw-svg-container" v-html="skill.svg_icon"></div>
+                            <Icon v-else icon="lucide:code" class="custom-icon" />
+                        </div>
 
                         <h3 class="font-semibold text-prussian_blue-500 mb-1">
-                            {{ skill.title }}
+                            {{ skill.name }}
                         </h3>
 
                         <p class="text-xs text-gray-500 text-center">
@@ -49,17 +58,18 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { useHomeStore } from '@/stores/homeStore'
+import { useSkillsStore } from '@/stores/skillsStore' // Updated to use the new API store
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-const { skills } = useHomeStore()
+const skillsStore = useSkillsStore()
 
 /*
  * Four copies make each track significantly wider than
  * the viewport, preventing empty space during the animation.
  */
 const loopedSkills = computed(() => {
-    return [...skills, ...skills, ...skills, ...skills]
+    if (!skillsStore.skills.length) return []
+    return [...skillsStore.skills, ...skillsStore.skills, ...skillsStore.skills, ...skillsStore.skills]
 })
 
 const isRtl = ref(false)
@@ -94,18 +104,6 @@ onUnmounted(() => {
  * ============================================================
  * MARQUEE TRACK
  * ============================================================
- *
- * Two identical groups:
- *
- * LTR:
- * [ TRACK 1 ][ TRACK 2 ]
- *      ← ← ← ←
- *
- * RTL:
- * [ TRACK 2 ][ TRACK 1 ]
- *      → → → →
- *
- * Each track has exactly the same width.
  */
 
 .marquee-track {
@@ -118,43 +116,17 @@ onUnmounted(() => {
     will-change: transform;
 }
 
-/*
- * In RTL we DON'T start at -50%.
- *
- * Instead we swap the two groups:
- *
- * [TRACK 2][TRACK 1]
- *
- * and move the complete belt toward the right.
- */
 .marquee-track-rtl {
     flex-direction: row-reverse;
     animation-name: marquee-rtl;
 }
 
-
-/*
- * ============================================================
- * GROUP
- * ============================================================
- *
- * No margin/gap is placed between the two groups.
- *
- * This is important because 50% must represent exactly
- * one complete group.
- */
 .marquee-group {
     display: flex;
     flex-shrink: 0;
     gap: 2rem;
+    margin: 0 1rem;
 }
-
-
-/*
- * ============================================================
- * CARD
- * ============================================================
- */
 
 .skill-card {
     display: flex;
@@ -175,25 +147,43 @@ onUnmounted(() => {
     border: 1px solid #f3f4f6;
 }
 
+/* --- Icon Sizing and Uniformity --- */
+.icon-wrapper {
+    width: 48px;
+    /* w-12 */
+    height: 48px;
+    /* h-12 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-icon {
+    width: 48px;
+    height: 48px;
+}
+
+/* Force raw SVGs to inherit the exact same size and color */
+.raw-svg-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.raw-svg-container :deep(svg) {
+    width: 48px !important;
+    height: 48px !important;
+    fill: currentColor !important;
+    /* Inherits text-deep_navy-600 */
+    stroke: currentColor !important;
+}
 
 /*
  * ============================================================
  * LTR
  * ============================================================
- *
- * Initial:
- *
- * [ TRACK 1 ][ TRACK 2 ]
- * └───────────────┘
- *
- * Move exactly one track width to the left.
- *
- * Final:
- *
- * [ TRACK 1 ][ TRACK 2 ]
- *             └────────
- *
- * TRACK 2 is now exactly where TRACK 1 originally was.
  */
 @keyframes marquee-ltr {
     from {
@@ -210,24 +200,6 @@ onUnmounted(() => {
  * ============================================================
  * RTL
  * ============================================================
- *
- * Because row-reverse gives us:
- *
- * [ TRACK 2 ][ TRACK 1 ]
- *
- * we can start at 0 and move the belt to the RIGHT.
- *
- * Initial:
- *
- * [ TRACK 2 ][ TRACK 1 ]
- *
- *              → → → →
- *
- * Final:
- *
- *             [ TRACK 2 ][ TRACK 1 ]
- *
- * TRACK 1 has now taken the exact position TRACK 2 had.
  */
 @keyframes marquee-rtl {
     from {

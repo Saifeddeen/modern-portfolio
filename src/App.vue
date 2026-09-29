@@ -7,23 +7,28 @@ import { onMounted, watch } from 'vue'
 import { RouterView } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import { useGeneralStore } from '@/stores/generalDataStore'
+import { useSkillsStore } from '@/stores/skillsStore'
 
 const appStore = useAppStore()
 const generalStore = useGeneralStore()
+const skillsStore = useSkillsStore()
 
-// 1. Fetch settings on initial load
 onMounted(async () => {
   appStore.initLocale()
-  await generalStore.fetchSettings()
+  // Fetch both in parallel on initial load
+  await Promise.all([
+    generalStore.fetchSettings(),
+    skillsStore.fetchSkills()
+  ])
 })
 
-// 2. Watch for locale changes and re-fetch settings
+// Watch for locale changes to re-fetch translated data
 watch(
   () => appStore.locale,
   (newLocale, oldLocale) => {
     if (newLocale !== oldLocale) {
-      // Re-fetch the settings so the backend returns the newly translated strings
       generalStore.fetchSettings()
+      skillsStore.fetchSkills()
     }
   }
 )

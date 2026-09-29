@@ -17,6 +17,14 @@ export interface SiteSettings {
     cv_link?: string | null;
 }
 
+export interface Skill {
+    id: number;
+    vue_iconify: string | null;
+    svg_icon: string | null;
+    name: string;
+    short_description: string | null;
+}
+
 export interface SocialLink {
     id: number;
     platform: string;
