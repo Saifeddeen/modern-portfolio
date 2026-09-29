@@ -8,17 +8,20 @@ import { RouterView } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import { useGeneralStore } from '@/stores/generalDataStore'
 import { useSkillsStore } from '@/stores/skillsStore'
+import { useServicesStore } from '@/stores/servicesStore'
 
 const appStore = useAppStore()
 const generalStore = useGeneralStore()
 const skillsStore = useSkillsStore()
+const servicesStore = useServicesStore()
 
 onMounted(async () => {
   appStore.initLocale()
-  // Fetch both in parallel on initial load
+  // Fetch in parallel on initial load
   await Promise.all([
     generalStore.fetchSettings(),
-    skillsStore.fetchSkills()
+    skillsStore.fetchSkills(),
+    servicesStore.fetchServices()
   ])
 })
 
@@ -29,6 +32,7 @@ watch(
     if (newLocale !== oldLocale) {
       generalStore.fetchSettings()
       skillsStore.fetchSkills()
+      servicesStore.fetchServices()
     }
   }
 )

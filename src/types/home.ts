@@ -1,3 +1,7 @@
+import type { Service } from './general'
+
+export type { Service }
+
 export interface HeroData {
     person_name: string;
     job_title: string;
@@ -5,13 +9,6 @@ export interface HeroData {
     cta_text: string;
     cta_link: string;
     profile_image: string | null;
-}
-
-export interface Service {
-    id: number;
-    icon: string; // Iconify name e.g., 'lucide:code'
-    name: string;
-    short_description: string;
 }
 
 export interface TopProject {

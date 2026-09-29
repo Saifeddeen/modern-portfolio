@@ -13,10 +13,10 @@ export const useHomeStore = defineStore('home', () => {
     })
 
     const services = ref<Service[]>([
-        { id: 1, icon: 'lucide:code', name: 'Web Development', short_description: 'Custom, responsive, and scalable web applications tailored to your business needs.' },
-        { id: 2, icon: 'lucide:server', name: 'Backend & API', short_description: 'Robust RESTful APIs and microservices using Laravel and PHP best practices.' },
-        { id: 3, icon: 'lucide:smartphone', name: 'UI/UX Implementation', short_description: 'Converting designs into pixel-perfect, interactive UIs with Vue and Tailwind.' },
-        { id: 4, icon: 'lucide:database', name: 'Database Design', short_description: 'Optimized database schemas and query performance for high-traffic apps.' }
+        { id: 1, vue_iconify: 'lucide:code', svg_icon: null, hero_image: null, name: 'Web Development', short_description: 'Custom, responsive, and scalable web applications tailored to your business needs.', full_description: null },
+        { id: 2, vue_iconify: 'lucide:server', svg_icon: null, hero_image: null, name: 'Backend & API', short_description: 'Robust RESTful APIs and microservices using Laravel and PHP best practices.', full_description: null },
+        { id: 3, vue_iconify: 'lucide:smartphone', svg_icon: null, hero_image: null, name: 'UI/UX Implementation', short_description: 'Converting designs into pixel-perfect, interactive UIs with Vue and Tailwind.', full_description: null },
+        { id: 4, vue_iconify: 'lucide:database', svg_icon: null, hero_image: null, name: 'Database Design', short_description: 'Optimized database schemas and query performance for high-traffic apps.', full_description: null }
     ])
 
     const topProjects = ref<TopProject[]>([

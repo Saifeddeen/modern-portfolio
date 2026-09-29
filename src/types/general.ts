@@ -25,6 +25,16 @@ export interface Skill {
     short_description: string | null;
 }
 
+export interface Service {
+    id: number;
+    vue_iconify: string | null;
+    svg_icon: string | null;
+    hero_image: string | null;
+    name: string;
+    short_description: string | null;
+    full_description: string | null;
+}
+
 export interface SocialLink {
     id: number;
     platform: string;
