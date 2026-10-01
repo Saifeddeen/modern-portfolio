@@ -4,6 +4,7 @@
         <ServicesSection />
         <TopProjectsSlider />
         <TechnologiesMarquee />
+        <SkillsSection />
         <CallToActionSection />
     </div>
 </template>
@@ -14,4 +15,5 @@ import ServicesSection from '@/components/home/ServicesSection.vue'
 import TopProjectsSlider from '@/components/home/TopProjectsSlider.vue'
 import TechnologiesMarquee from '@/components/home/TechnologiesMarquee.vue'
 import CallToActionSection from '@/components/home/CallToActionSection.vue'
+import SkillsSection from '@/components/home/SkillsSection.vue'
 </script>

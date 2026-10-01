@@ -9,11 +9,13 @@ import { useAppStore } from '@/stores/app'
 import { useGeneralStore } from '@/stores/generalDataStore'
 import { useTechnologiesStore } from '@/stores/technologiesStore'
 import { useServicesStore } from '@/stores/servicesStore'
+import { useSkillsStore } from '@/stores/skillsStore'
 
 const appStore = useAppStore()
 const generalStore = useGeneralStore()
 const technologiesStore = useTechnologiesStore()
 const servicesStore = useServicesStore()
+const skillsStore = useSkillsStore()
 
 onMounted(async () => {
   appStore.initLocale()
@@ -21,7 +23,8 @@ onMounted(async () => {
   await Promise.all([
     generalStore.fetchSettings(),
     technologiesStore.fetchTechnologies(),
-    servicesStore.fetchServices()
+    servicesStore.fetchServices(),
+    skillsStore.fetchSkills()
   ])
 })
 
@@ -33,6 +36,7 @@ watch(
       generalStore.fetchSettings()
       technologiesStore.fetchTechnologies()
       servicesStore.fetchServices()
+      skillsStore.fetchSkills()
     }
   }
 )
