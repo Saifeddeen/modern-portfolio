@@ -7,12 +7,12 @@ import { onMounted, watch } from 'vue'
 import { RouterView } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import { useGeneralStore } from '@/stores/generalDataStore'
-import { useSkillsStore } from '@/stores/skillsStore'
+import { useTechnologiesStore } from '@/stores/technologiesStore'
 import { useServicesStore } from '@/stores/servicesStore'
 
 const appStore = useAppStore()
 const generalStore = useGeneralStore()
-const skillsStore = useSkillsStore()
+const technologiesStore = useTechnologiesStore()
 const servicesStore = useServicesStore()
 
 onMounted(async () => {
@@ -20,7 +20,7 @@ onMounted(async () => {
   // Fetch in parallel on initial load
   await Promise.all([
     generalStore.fetchSettings(),
-    skillsStore.fetchSkills(),
+    technologiesStore.fetchTechnologies(),
     servicesStore.fetchServices()
   ])
 })
@@ -31,7 +31,7 @@ watch(
   (newLocale, oldLocale) => {
     if (newLocale !== oldLocale) {
       generalStore.fetchSettings()
-      skillsStore.fetchSkills()
+      technologiesStore.fetchTechnologies()
       servicesStore.fetchServices()
     }
   }

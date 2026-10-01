@@ -3,7 +3,7 @@
         <HeroSection />
         <ServicesSection />
         <TopProjectsSlider />
-        <SkillsMarquee />
+        <TechnologiesMarquee />
         <CallToActionSection />
     </div>
 </template>
@@ -12,6 +12,6 @@
 import HeroSection from '@/components/home/HeroSection.vue'
 import ServicesSection from '@/components/home/ServicesSection.vue'
 import TopProjectsSlider from '@/components/home/TopProjectsSlider.vue'
-import SkillsMarquee from '@/components/home/SkillsMarquee.vue'
+import TechnologiesMarquee from '@/components/home/TechnologiesMarquee.vue'
 import CallToActionSection from '@/components/home/CallToActionSection.vue'
 </script>

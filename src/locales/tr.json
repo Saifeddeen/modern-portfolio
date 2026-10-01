@@ -26,12 +26,12 @@
         "subtitle": "En iyi son projelerimden bir seçki.",
         "view_details": "Detayları Gör"
     },
-    "skills": {
-        "title": "Teknoloji Yığını ve Beceriler",
+    "technologies": {
+        "title": "Teknoloji Yığını",
         "subtitle": "Sağlam uygulamalar oluşturmak için kullandığım araçlar ve teknolojiler."
     },
-    "skills_marquee": {
-        "title": "Teknoloji Yığını ve Beceriler",
+    "technologies_marquee": {
+        "title": "Teknoloji Yığını",
         "subtitle": "Sağlam uygulamalar oluşturmak için kullandığım araçlar ve teknolojiler."
     },
     "cta": {

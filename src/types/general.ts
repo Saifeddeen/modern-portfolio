@@ -17,7 +17,7 @@ export interface SiteSettings {
     cv_link?: string | null;
 }
 
-export interface Skill {
+export interface Technology {
     id: number;
     vue_iconify: string | null;
     svg_icon: string | null;

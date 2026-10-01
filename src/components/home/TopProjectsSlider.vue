@@ -29,9 +29,9 @@
                                 <p class="text-gray-600 mb-6 leading-relaxed line-clamp-3">{{ project.short_description
                                     }}</p>
                                 <div class="flex flex-wrap gap-2 mb-6">
-                                    <span v-for="skill in project.skills" :key="skill"
+                                    <span v-for="technology in project.technologies" :key="technology"
                                         class="bg-gray-100 text-prussian_blue-500 text-sm px-3 py-1 rounded-full font-medium">
-                                        {{ skill }}
+                                        {{ technology }}
                                     </span>
                                 </div>
                                 <RouterLink to="/projects"

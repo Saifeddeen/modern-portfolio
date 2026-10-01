@@ -17,10 +17,10 @@ export interface TopProject {
     hero_image: string;
     owner: string;
     short_description: string;
-    skills: string[];
+    technologies: string[];
 }
 
-export interface Skill {
+export interface Technology {
     id: number;
     logo: string; // Iconify name or URL
     title: string;

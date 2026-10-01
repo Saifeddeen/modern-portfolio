@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { HeroData, Service, TopProject, Skill } from '@/types/home'
+import type { HeroData, Service, TopProject, Technology } from '@/types/home'
 
 export const useHomeStore = defineStore('home', () => {
     const hero = ref<HeroData>({
@@ -20,12 +20,12 @@ export const useHomeStore = defineStore('home', () => {
     ])
 
     const topProjects = ref<TopProject[]>([
-        { id: 1, name: 'E-Commerce Platform', hero_image: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', owner: 'TechCorp', short_description: 'A full-featured e-commerce solution with real-time inventory and payment integration.', skills: ['Vue 3', 'Laravel', 'MySQL'] },
-        { id: 2, name: 'SaaS Dashboard', hero_image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', owner: 'Analytics Inc', short_description: 'An advanced analytics dashboard with interactive charts and role management.', skills: ['TypeScript', 'Pinia', 'TailwindCSS'] },
-        { id: 3, name: 'Portfolio CMS', hero_image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', owner: 'Self', short_description: 'A headless CMS for developers to manage their portfolio projects dynamically.', skills: ['Vue Router', 'Laravel API', 'Sanctum'] }
+        { id: 1, name: 'E-Commerce Platform', hero_image: 'https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', owner: 'TechCorp', short_description: 'A full-featured e-commerce solution with real-time inventory and payment integration.', technologies: ['Vue 3', 'Laravel', 'MySQL'] },
+        { id: 2, name: 'SaaS Dashboard', hero_image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', owner: 'Analytics Inc', short_description: 'An advanced analytics dashboard with interactive charts and role management.', technologies: ['TypeScript', 'Pinia', 'TailwindCSS'] },
+        { id: 3, name: 'Portfolio CMS', hero_image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', owner: 'Self', short_description: 'A headless CMS for developers to manage their portfolio projects dynamically.', technologies: ['Vue Router', 'Laravel API', 'Sanctum'] }
     ])
 
-    const skills = ref<Skill[]>([
+    const technologies = ref<Technology[]>([
         { id: 1, logo: 'simple-icons:vuedotjs', title: 'Vue 3', short_description: 'Composition API & Pinia' },
         { id: 2, logo: 'simple-icons:laravel', title: 'Laravel', short_description: 'API & Backend Development' },
         { id: 3, logo: 'simple-icons:tailwindcss', title: 'TailwindCSS', short_description: 'Modern Utility-First Styling' },
@@ -36,5 +36,5 @@ export const useHomeStore = defineStore('home', () => {
         { id: 8, logo: 'simple-icons:docker', title: 'Docker', short_description: 'Containerization & DevOps' }
     ])
 
-    return { hero, services, topProjects, skills }
+    return { hero, services, topProjects, technologies }
 })

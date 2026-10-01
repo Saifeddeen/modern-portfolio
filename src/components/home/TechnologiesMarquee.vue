@@ -2,7 +2,7 @@
     <section class="py-16 md:py-24 overflow-hidden">
         <div class="container mx-auto px-4 mb-12">
             <h2 class="text-3xl font-bold text-center text-prussian_blue-500">
-                {{ $t('skills_marquee.title') }}
+                {{ $t('technologies_marquee.title') }}
             </h2>
         </div>
 
@@ -15,39 +15,39 @@
             <div class="marquee-track" :class="{ 'marquee-track-rtl': isRtl }" dir="ltr">
                 <!-- Track 1 -->
                 <div class="marquee-group">
-                    <div v-for="(skill, index) in loopedSkills" :key="`t1-${index}`" class="skill-card">
+                    <div v-for="(technology, index) in loopedTechnologies" :key="`t1-${index}`" class="technology-card">
                         <!-- Icon Wrapper for uniform sizing -->
                         <div class="icon-wrapper mb-4 text-deep_navy-600">
-                            <Icon v-if="skill.vue_iconify" :icon="skill.vue_iconify" class="custom-icon" />
-                            <div v-else-if="skill.svg_icon" class="raw-svg-container" v-html="skill.svg_icon"></div>
+                            <Icon v-if="technology.vue_iconify" :icon="technology.vue_iconify" class="custom-icon" />
+                            <div v-else-if="technology.svg_icon" class="raw-svg-container" v-html="technology.svg_icon"></div>
                             <Icon v-else icon="lucide:code" class="custom-icon" />
                         </div>
 
                         <h3 class="font-semibold text-prussian_blue-500 mb-1">
-                            {{ skill.name }}
+                            {{ technology.name }}
                         </h3>
 
                         <p class="text-xs text-gray-500 text-center">
-                            {{ skill.short_description }}
+                            {{ technology.short_description }}
                         </p>
                     </div>
                 </div>
 
                 <!-- Track 2 -->
                 <div class="marquee-group" aria-hidden="true">
-                    <div v-for="(skill, index) in loopedSkills" :key="`t2-${index}`" class="skill-card">
+                    <div v-for="(technology, index) in loopedTechnologies" :key="`t2-${index}`" class="technology-card">
                         <div class="icon-wrapper mb-4 text-deep_navy-600">
-                            <Icon v-if="skill.vue_iconify" :icon="skill.vue_iconify" class="custom-icon" />
-                            <div v-else-if="skill.svg_icon" class="raw-svg-container" v-html="skill.svg_icon"></div>
+                            <Icon v-if="technology.vue_iconify" :icon="technology.vue_iconify" class="custom-icon" />
+                            <div v-else-if="technology.svg_icon" class="raw-svg-container" v-html="technology.svg_icon"></div>
                             <Icon v-else icon="lucide:code" class="custom-icon" />
                         </div>
 
                         <h3 class="font-semibold text-prussian_blue-500 mb-1">
-                            {{ skill.name }}
+                            {{ technology.name }}
                         </h3>
 
                         <p class="text-xs text-gray-500 text-center">
-                            {{ skill.short_description }}
+                            {{ technology.short_description }}
                         </p>
                     </div>
                 </div>
@@ -58,18 +58,18 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { useSkillsStore } from '@/stores/skillsStore' // Updated to use the new API store
+import { useTechnologiesStore } from '@/stores/technologiesStore' // Updated to use the new API store
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 
-const skillsStore = useSkillsStore()
+const technologiesStore = useTechnologiesStore()
 
 /*
  * Four copies make each track significantly wider than
  * the viewport, preventing empty space during the animation.
  */
-const loopedSkills = computed(() => {
-    if (!skillsStore.skills.length) return []
-    return [...skillsStore.skills, ...skillsStore.skills, ...skillsStore.skills, ...skillsStore.skills]
+const loopedTechnologies = computed(() => {
+    if (!technologiesStore.technologies.length) return []
+    return [...technologiesStore.technologies, ...technologiesStore.technologies, ...technologiesStore.technologies, ...technologiesStore.technologies]
 })
 
 const isRtl = ref(false)
@@ -128,7 +128,7 @@ onUnmounted(() => {
     margin: 0 1rem;
 }
 
-.skill-card {
+.technology-card {
     display: flex;
     flex-direction: column;
     align-items: center;

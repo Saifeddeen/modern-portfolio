@@ -26,12 +26,12 @@
         "subtitle": "A selection of my best recent projects.",
         "view_details": "View Details"
     },
-    "skills": {
-        "title": "Tech Stack & Skills",
+    "technologies": {
+        "title": "Tech Stack & Technologies",
         "subtitle": "Tools and technologies I use to build robust applications."
     },
-    "skills_marquee": {
-        "title": "Tech Stack & Skills",
+    "technologies_marquee": {
+        "title": "Tech Stack & Technologies",
         "subtitle": "Tools and technologies I use to build robust applications."
     },
     "cta": {
