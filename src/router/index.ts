@@ -6,7 +6,9 @@ const routes: RouteRecordRaw[] = [
         path: '/',
         component: DefaultLayout,
         children: [
-            { path: '', name: 'home', component: () => import('@/views/HomeView.vue') }
+            { path: '', name: 'home', component: () => import('@/views/HomeView.vue') },
+            { path: 'projects', name: 'projects', component: () => import('@/views/ProjectsView.vue') },
+            { path: 'projects/:slug', name: 'project-detail', component: () => import('@/views/ProjectDetailView.vue'), props: true }
         ]
     }
 ]

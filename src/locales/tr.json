@@ -38,6 +38,15 @@
         "title": "Temel Beceriler",
         "subtitle": "Her projeye uyguladığım teknik uzmanlık ve sosyal becerilerin birleşimi."
     },
+    "projects_page": {
+        "title": "Projelerim",
+        "subtitle": "Tutku ve modern teknolojilerle inşa edilmiş işlerimden bir seçki."
+    },
+    "project_detail": {
+        "gallery": "Proje Galerisi",
+        "technologies": "Kullanılan Teknolojiler",
+        "skills": "Uygulanan Beceriler"
+    },
     "cta": {
         "title": "Bir projeniz mi var?",
         "subtitle": "Gelin birlikte harika bir şey inşa edelim. Freelance projeler ve tam zamanlı pozisyonlar için hazırım.",

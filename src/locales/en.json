@@ -38,6 +38,15 @@
         "title": "Core Skills",
         "subtitle": "A blend of technical expertise and soft skills I apply to every project."
     },
+    "projects_page": {
+        "title": "My Projects",
+        "subtitle": "A collection of my work, built with passion and modern technologies."
+    },
+    "project_detail": {
+        "gallery": "Project Gallery",
+        "technologies": "Technologies Used",
+        "skills": "Skills Applied"
+    },
     "cta": {
         "title": "Have a project in mind?",
         "subtitle": "Let's collaborate and build something amazing together. I'm available for freelance projects and full-time positions.",
