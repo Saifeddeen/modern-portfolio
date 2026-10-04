@@ -47,6 +47,25 @@
         "technologies": "Technologies Used",
         "skills": "Skills Applied"
     },
+    "contact_page": {
+        "title": "Let's Work Together",
+        "subtitle": "Have a project in mind or just want to say hi? Feel free to reach out.",
+        "info_title": "Contact Information",
+        "follow_me": "Follow Me",
+        "phone_label": "Phone",
+        "email_label": "Email",
+        "address_label": "Address",
+        "form": {
+            "name": "Your Name",
+            "email": "Your Email",
+            "subject": "Subject",
+            "message": "Your Message",
+            "submit": "Send Message",
+            "sending": "Sending...",
+            "success": "Thank you for reaching out! Your message has been sent successfully. I will get back to you as soon as possible.",
+            "error": "Oops! Something went wrong. Please try again."
+        }
+    },
     "cta": {
         "title": "Have a project in mind?",
         "subtitle": "Let's collaborate and build something amazing together. I'm available for freelance projects and full-time positions.",

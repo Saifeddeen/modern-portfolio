@@ -15,6 +15,9 @@ export interface SiteSettings {
     bio: string | null;
     avatar: string | null;
     cv_link?: string | null;
+    phone?: string | null;
+    address?: string | null;
+    email?: string | null;
 }
 
 export interface Technology {
@@ -54,4 +57,11 @@ export interface ContactInfo {
     phone: string;
     email: string;
     address: string;
+}
+
+export interface ContactMessage {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
 }

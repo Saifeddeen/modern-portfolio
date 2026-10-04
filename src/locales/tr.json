@@ -47,6 +47,25 @@
         "technologies": "Kullanılan Teknolojiler",
         "skills": "Uygulanan Beceriler"
     },
+    "contact_page": {
+        "title": "Birlikte Çalışalım",
+        "subtitle": "Aklınızda bir proje mi var veya sadece merhaba mı demek istiyorsunuz? Bana ulaşmaktan çekinmeyin.",
+        "info_title": "İletişim Bilgileri",
+        "follow_me": "Beni Takip Et",
+        "phone_label": "Telefon",
+        "email_label": "E-posta",
+        "address_label": "Adres",
+        "form": {
+            "name": "Adınız",
+            "email": "E-postanız",
+            "subject": "Konu",
+            "message": "Mesajınız",
+            "submit": "Mesaj Gönder",
+            "sending": "Gönderiliyor...",
+            "success": "Benimle iletişime geçtiğiniz için teşekkürler! Mesajınız başarıyla gönderildi. En kısa sürede size geri döneceğim.",
+            "error": "Hay aksi! Bir şeyler ters gitti. Lütfen tekrar deneyin."
+        }
+    },
     "cta": {
         "title": "Bir projeniz mi var?",
         "subtitle": "Gelin birlikte harika bir şey inşa edelim. Freelance projeler ve tam zamanlı pozisyonlar için hazırım.",
