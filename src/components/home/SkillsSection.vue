@@ -38,7 +38,7 @@
             <div class="relative w-full h-full transition-transform duration-200 ease-out"
                 :style="{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }">
                 <div v-for="(skill, index) in skillsStore.skills" :key="skill.id"
-                    class="absolute skill-tag group cursor-pointer" :style="getTagPosition(index)">
+                    class="absolute skill-tag group cursor-default" :style="getTagPosition(index)">
                     <!-- Holographic Tag Style -->
                     <div
                         class="flex items-center gap-2.5 px-6 py-3.5 bg-white-500/5 backdrop-blur-md rounded-xl shadow-lg border border-white-500/10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:bg-white-500/10 group-hover:border-cerulean-500 group-hover:z-50">

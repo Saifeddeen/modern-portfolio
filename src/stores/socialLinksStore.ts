@@ -1,13 +1,26 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { SocialLink } from '@/types/general'
+import api from '@/composables/useApi'
 
 export const useSocialLinksStore = defineStore('socialLinks', () => {
-    const links = ref<SocialLink[]>([
-        { id: 1, platform: 'GitHub', url: 'https://github.com', icon: 'simple-icons:github' },
-        { id: 2, platform: 'LinkedIn', url: 'https://linkedin.com', icon: 'simple-icons:linkedin' },
-        { id: 3, platform: 'X', url: 'https://x.com', icon: 'simple-icons:x' }
-    ])
+    const links = ref<SocialLink[]>([])
+    const isLoading = ref(false)
 
-    return { links }
+    async function fetchSocialLinks() {
+        isLoading.value = true
+        try {
+            const response = await api.get('/social-links')
+            if (response.data.status === 'success' && response.data.data) {
+                // Ensure only active links are displayed
+                links.value = response.data.data.filter((link: SocialLink) => link.is_active)
+            }
+        } catch (error) {
+            console.error('Failed to fetch social links:', error)
+        } finally {
+            isLoading.value = false
+        }
+    }
+
+    return { links, isLoading, fetchSocialLinks }
 })

@@ -11,6 +11,7 @@ import { useTechnologiesStore } from '@/stores/technologiesStore'
 import { useServicesStore } from '@/stores/servicesStore'
 import { useSkillsStore } from '@/stores/skillsStore'
 import { useProjectsStore } from './stores/projectsStore'
+import { useSocialLinksStore } from '@/stores/socialLinksStore'
 
 const appStore = useAppStore()
 const generalStore = useGeneralStore()
@@ -18,6 +19,7 @@ const technologiesStore = useTechnologiesStore()
 const servicesStore = useServicesStore()
 const skillsStore = useSkillsStore()
 const projectsStore = useProjectsStore()
+const socialStore = useSocialLinksStore()
 
 onMounted(async () => {
   appStore.initLocale()
@@ -28,7 +30,7 @@ onMounted(async () => {
     servicesStore.fetchServices(),
     skillsStore.fetchSkills(),
     projectsStore.fetchFeaturedProjects(),
-
+    socialStore.fetchSocialLinks()
   ])
 })
 

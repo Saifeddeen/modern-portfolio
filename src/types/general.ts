@@ -48,9 +48,11 @@ export interface Skill {
 
 export interface SocialLink {
     id: number;
-    platform: string;
-    url: string;
-    icon: string;
+    name: string;
+    link: string;
+    vue_iconify: string | null;
+    svg_icon: string | null;
+    is_active: boolean;
 }
 
 export interface ContactInfo {

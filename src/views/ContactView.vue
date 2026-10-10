@@ -60,13 +60,8 @@
 
                         <div class="mt-auto">
                             <h4 class="text-lg font-semibold mb-4">{{ t('contact_page.follow_me') }}</h4>
-                            <div class="flex gap-3">
-                                <a v-for="social in socialStore.links" :key="social.id" :href="social.url"
-                                    target="_blank"
-                                    class="w-10 h-10 bg-white-500/10 rounded-lg flex items-center justify-center hover:bg-cerulean-500 transition-colors">
-                                    <Icon :icon="social.icon" class="w-5 h-5 text-white-500" />
-                                </a>
-                            </div>
+                            <SocialLinks wrapper-class="bg-white-500/10 hover:bg-cerulean-500 text-white-500 rounded-lg"
+                                icon-class="w-5 h-5 text-white-500" />
                         </div>
                     </div>
                 </div>
@@ -135,16 +130,15 @@ import { reactive, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Icon } from '@iconify/vue'
 import { useContactStore } from '@/stores/contactStore'
-import { useSocialLinksStore } from '@/stores/socialLinksStore'
 import { useGeneralStore } from '@/stores/generalDataStore'
 import type { ContactMessage } from '@/types/general'
+import SocialLinks from '@/components/ui/SocialLinks.vue'
 
 const { t } = useI18n()
 const contactStore = useContactStore()
-const socialStore = useSocialLinksStore()
 const generalStore = useGeneralStore()
 
-const isResetting = ref(false) // Flag to prevent watch from clearing message on reset
+const isResetting = ref(false)
 
 const form = reactive<ContactMessage>({
     name: '',

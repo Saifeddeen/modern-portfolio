@@ -34,12 +34,8 @@
             <!-- Social Media -->
             <div>
                 <h4 class="text-lg font-semibold mb-4 text-white-500">{{ t('footer.follow') }}</h4>
-                <div class="flex space-x-4">
-                    <a v-for="social in socialStore.links" :key="social.id" :href="social.url" target="_blank"
-                        rel="noopener noreferrer" class="text-gray-400 hover:text-cerulean-700 transition-colors">
-                        <Icon :icon="social.icon" class="w-6 h-6" />
-                    </a>
-                </div>
+                <SocialLinks wrapper-class="bg-white-500/10 hover:bg-cerulean-500 text-white-500 rounded-lg"
+                    icon-class="w-5 h-5 text-white-500" />
             </div>
 
         </div>
@@ -51,12 +47,11 @@ import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import { useGeneralStore } from '@/stores/generalDataStore'
-import { useSocialLinksStore } from '@/stores/socialLinksStore'
 import { useContactStore } from '@/stores/contactStore'
+import SocialLinks from '../ui/SocialLinks.vue'
 
 const { t } = useI18n()
 const generalStore = useGeneralStore()
-const socialStore = useSocialLinksStore()
 const contactStore = useContactStore()
 
 const copyrightText = computed(() => {
