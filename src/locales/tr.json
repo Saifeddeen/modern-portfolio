@@ -47,6 +47,12 @@
         "technologies": "Kullanılan Teknolojiler",
         "skills": "Uygulanan Beceriler"
     },
+    "services_page": {
+        "badge": "Sunduklarım",
+        "title": "Hizmetlerim",
+        "subtitle": "Dijital fikirlerinizi hayata geçirmek için özel olarak hazırlanmış kapsamlı çözümler.",
+        "overview": "Genel Bakış"
+    },
     "contact_page": {
         "title": "Birlikte Çalışalım",
         "subtitle": "Aklınızda bir proje mi var veya sadece merhaba mı demek istiyorsunuz? Bana ulaşmaktan çekinmeyin.",

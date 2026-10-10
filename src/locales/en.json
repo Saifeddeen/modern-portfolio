@@ -47,6 +47,12 @@
         "technologies": "Technologies Used",
         "skills": "Skills Applied"
     },
+    "services_page": {
+        "badge": "What I Offer",
+        "title": "My Services",
+        "subtitle": "Comprehensive solutions tailored to bring your digital ideas to life.",
+        "overview": "Overview"
+    },
     "contact_page": {
         "title": "Let's Work Together",
         "subtitle": "Have a project in mind or just want to say hi? Feel free to reach out.",
