@@ -32,13 +32,14 @@
             </p>
         </div>
 
-        <!-- Parallax 3D Container -->
-        <div ref="parallaxContainer" class="relative max-w-6xl mx-auto h-[450px] md:h-[550px] z-10"
-            style="perspective: 1000px;">
-            <div class="relative w-full h-full transition-transform duration-200 ease-out"
+        <!-- Skills Flex-Wrap Container with 3D parallax tilt -->
+        <div ref="parallaxContainer" class="relative max-w-6xl mx-auto z-10 px-4"
+            style="perspective: 1200px;">
+            <div class="flex flex-wrap justify-center items-center transition-transform duration-200 ease-out"
                 :style="{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }">
                 <div v-for="(skill, index) in skillsStore.skills" :key="skill.id"
-                    class="absolute skill-tag group cursor-default" :style="getTagPosition(index)">
+                    class="skill-tag group cursor-default"
+                    :style="{ animationDelay: `${index * 0.25}s`, animationDuration: `${4 + (index % 4)}s` }">
                     <!-- Holographic Tag Style -->
                     <div
                         class="flex items-center gap-2.5 px-6 py-3.5 bg-white-500/5 backdrop-blur-md rounded-xl shadow-lg border border-white-500/10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:bg-white-500/10 group-hover:border-cerulean-500 group-hover:z-50">
@@ -73,55 +74,34 @@ const containerRect = ref<DOMRect | null>(null)
 // Track mouse position globally
 const { x: mouseX, y: mouseY } = useMouse({ touch: false })
 
-// Update container rect on mount and resize to calculate relative mouse position
-onMounted(() => {
-    updateRect()
-    window.addEventListener('resize', updateRect)
-})
+// Update container rect on mount/resize for parallax tilt
 const updateRect = () => {
     if (parallaxContainer.value) {
         containerRect.value = parallaxContainer.value.getBoundingClientRect()
     }
 }
+onMounted(() => {
+    updateRect()
+    window.addEventListener('resize', updateRect)
+})
 
-// Calculate 3D tilt based on mouse position relative to container
+// 3D mouse-parallax tilt
 const rotateX = computed(() => {
     if (!containerRect.value) return 0
     const centerY = containerRect.value.top + containerRect.value.height / 2
-    // Distance from center (-1 to 1)
     const relativeY = (mouseY.value - centerY) / (containerRect.value.height / 2)
-    return relativeY * 8 // Max 8 deg tilt
+    return relativeY * 6
 })
-
 const rotateY = computed(() => {
     if (!containerRect.value) return 0
     const centerX = containerRect.value.left + containerRect.value.width / 2
     const relativeX = (mouseX.value - centerX) / (containerRect.value.width / 2)
-    return -relativeX * 8 // Max 8 deg tilt
+    return -relativeX * 6
 })
 
-// Calculate scattered organic positions for tags
-const getTagPosition = (index: number) => {
-    // Use golden angle for organic, non-cluttered distribution
-    const angle = index * 137.5 * (Math.PI / 180)
-    const radius = 15 + (index % 4) * 12 // Varying radius for depth
-
-    // Center based coordinates (kept within 15% - 85% to prevent edge cutoff)
-    const x = 50 + Math.cos(angle) * radius
-    const y = 50 + Math.sin(angle) * radius * 0.8 // Slightly flatten vertically
-
-    return {
-        left: `${x}%`,
-        top: `${y}%`,
-        transform: 'translate(-50%, -50%)',
-        animationDelay: `${index * 0.3}s`,
-        animationDuration: `${4 + (index % 3)}s`
-    }
-}
-
-// Generate random styles for background particles
+// Background particles
 const particleStyle = (n: number) => {
-    const size = (n % 3) + 2 // 2px to 4px
+    const size = (n % 3) + 2
     const x = (n * 5) % 100
     const y = (n * 7) % 100
     const duration = 5 + (n % 5)
@@ -132,7 +112,7 @@ const particleStyle = (n: number) => {
         left: `${x}%`,
         top: `${y}%`,
         animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`
+        animationDelay: `${delay}s`,
     }
 }
 </script>
@@ -140,26 +120,24 @@ const particleStyle = (n: number) => {
 <style scoped>
 /* --- Skill Tag Animations --- */
 .skill-tag {
+    /* 6px margin keeps neighbouring tags separated */
+    margin: 6px;
+    display: inline-flex;
+    position: relative;
+    z-index: 1;
     animation: float 6s ease-in-out infinite;
     will-change: transform;
 }
 
 .skill-tag:hover {
     animation-play-state: paused;
+    z-index: 50;
 }
 
 @keyframes float {
-    0% {
-        transform: translate(-50%, -50%) translateY(0px);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) translateY(-15px);
-    }
-
-    100% {
-        transform: translate(-50%, -50%) translateY(0px);
-    }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-14px); }
+    100% { transform: translateY(0px); }
 }
 
 /* --- Background Animations --- */

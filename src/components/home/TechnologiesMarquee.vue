@@ -19,7 +19,8 @@
                         <!-- Icon Wrapper for uniform sizing -->
                         <div class="icon-wrapper mb-4 text-deep_navy-600">
                             <Icon v-if="technology.vue_iconify" :icon="technology.vue_iconify" class="custom-icon" />
-                            <div v-else-if="technology.svg_icon" class="raw-svg-container" v-html="technology.svg_icon"></div>
+                            <div v-else-if="technology.svg_icon" class="raw-svg-container" v-html="technology.svg_icon">
+                            </div>
                             <Icon v-else icon="lucide:code" class="custom-icon" />
                         </div>
 
@@ -38,7 +39,8 @@
                     <div v-for="(technology, index) in loopedTechnologies" :key="`t2-${index}`" class="technology-card">
                         <div class="icon-wrapper mb-4 text-deep_navy-600">
                             <Icon v-if="technology.vue_iconify" :icon="technology.vue_iconify" class="custom-icon" />
-                            <div v-else-if="technology.svg_icon" class="raw-svg-container" v-html="technology.svg_icon"></div>
+                            <div v-else-if="technology.svg_icon" class="raw-svg-container" v-html="technology.svg_icon">
+                            </div>
                             <Icon v-else icon="lucide:code" class="custom-icon" />
                         </div>
 
@@ -111,7 +113,7 @@ onUnmounted(() => {
     width: max-content;
     flex-direction: row;
 
-    animation: marquee-ltr 40s linear infinite;
+    animation: marquee-ltr 150s linear infinite;
 
     will-change: transform;
 }
