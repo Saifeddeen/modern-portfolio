@@ -14,7 +14,7 @@
 
                 <!-- Text Content -->
                 <div class="text-center md:text-start flex-1">
-                    <div
+                    <div v-if="false"
                         class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white-500/5 border border-white-500/10 mb-6">
                         <span class="relative flex h-2 w-2">
                             <span
@@ -27,7 +27,7 @@
                     <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white-500 mb-4 tracking-tight">
                         {{ t('hero.greeting') }} <br class="hidden md:block" />
                         <span
-                            class="bg-gradient-to-r from-cerulean-700 via-cerulean-500 to-yale-blue-700 bg-clip-text text-transparent">
+                            class="bg-gradient-to-r from-cerulean-700 via-cerulean-500 to-yale_blue-700 bg-clip-text text-transparent">
                             {{ generalStore.settings?.name || 'Loading...' }}
                         </span>
                     </h1>

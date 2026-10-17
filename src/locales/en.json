@@ -45,7 +45,9 @@
     "project_detail": {
         "gallery": "Project Gallery",
         "technologies": "Technologies Used",
-        "skills": "Skills Applied"
+        "description": "Description",
+        "skills": "Skills Applied",
+        "live_link": "Project Link"
     },
     "services_page": {
         "badge": "What I Offer",

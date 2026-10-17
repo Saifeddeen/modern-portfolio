@@ -45,7 +45,9 @@
     "project_detail": {
         "gallery": "معرض المشروع",
         "technologies": "التقنيات المستخدمة",
-        "skills": "المهارات المطبقة"
+        "description": "الوصف",
+        "skills": "المهارات المطبقة",
+        "live_link": "رابط المشروع"
     },
     "services_page": {
         "badge": "ماذا أقدم",

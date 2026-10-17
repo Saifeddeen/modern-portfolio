@@ -45,7 +45,9 @@
     "project_detail": {
         "gallery": "Proje Galerisi",
         "technologies": "Kullanılan Teknolojiler",
-        "skills": "Uygulanan Beceriler"
+        "description": "Açıklama",
+        "skills": "Uygulanan Beceriler",
+        "live_link": "Proje Bağlantısı"
     },
     "services_page": {
         "badge": "Sunduklarım",

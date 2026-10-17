@@ -18,6 +18,10 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes,
+    scrollBehavior(_to, _from, savedPosition) {
+        // Restore position on back/forward, otherwise start at the top of the new view
+        return savedPosition ?? { top: 0 }
+    },
 })
 
 export default router

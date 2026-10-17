@@ -32,26 +32,24 @@
             </p>
         </div>
 
-        <!-- Skills Flex-Wrap Container with 3D parallax tilt -->
-        <div ref="parallaxContainer" class="relative max-w-6xl mx-auto z-10 px-4"
-            style="perspective: 1200px;">
-            <div class="flex flex-wrap justify-center items-center transition-transform duration-200 ease-out"
-                :style="{ transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)` }">
+        <!-- Skills Flex-Wrap Container -->
+        <div class="relative max-w-6xl mx-auto z-10 px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center gap-0">
                 <div v-for="(skill, index) in skillsStore.skills" :key="skill.id"
                     class="skill-tag group cursor-default"
                     :style="{ animationDelay: `${index * 0.25}s`, animationDuration: `${4 + (index % 4)}s` }">
                     <!-- Holographic Tag Style -->
                     <div
-                        class="flex items-center gap-2.5 px-6 py-3.5 bg-white-500/5 backdrop-blur-md rounded-xl shadow-lg border border-white-500/10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:bg-white-500/10 group-hover:border-cerulean-500 group-hover:z-50">
+                        class="flex items-center gap-2 px-4 py-3 sm:px-6 sm:py-3.5 bg-white-500/5 backdrop-blur-md rounded-xl shadow-lg border border-white-500/10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl group-hover:bg-white-500/10 group-hover:border-cerulean-500">
 
                         <!-- Conditional Icon -->
                         <div v-if="skill.vue_iconify || skill.svg_icon"
-                            class="flex items-center justify-center text-cerulean-700">
-                            <Icon v-if="skill.vue_iconify" :icon="skill.vue_iconify" class="w-6 h-6" />
+                            class="flex items-center justify-center text-cerulean-700 shrink-0">
+                            <Icon v-if="skill.vue_iconify" :icon="skill.vue_iconify" class="w-5 h-5 sm:w-6 sm:h-6" />
                             <div v-else-if="skill.svg_icon" class="raw-svg-container" v-html="skill.svg_icon"></div>
                         </div>
 
-                        <span class="font-semibold text-white-500 whitespace-nowrap text-lg">
+                        <span class="font-semibold text-white-500 whitespace-nowrap text-sm sm:text-base lg:text-lg">
                             {{ skill.title }}
                         </span>
                     </div>
@@ -64,40 +62,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { useSkillsStore } from '@/stores/skillsStore'
-import { useMouse } from '@vueuse/core'
-import { ref, computed, onMounted } from 'vue'
 
 const skillsStore = useSkillsStore()
-const parallaxContainer = ref<HTMLElement | null>(null)
-const containerRect = ref<DOMRect | null>(null)
-
-// Track mouse position globally
-const { x: mouseX, y: mouseY } = useMouse({ touch: false })
-
-// Update container rect on mount/resize for parallax tilt
-const updateRect = () => {
-    if (parallaxContainer.value) {
-        containerRect.value = parallaxContainer.value.getBoundingClientRect()
-    }
-}
-onMounted(() => {
-    updateRect()
-    window.addEventListener('resize', updateRect)
-})
-
-// 3D mouse-parallax tilt
-const rotateX = computed(() => {
-    if (!containerRect.value) return 0
-    const centerY = containerRect.value.top + containerRect.value.height / 2
-    const relativeY = (mouseY.value - centerY) / (containerRect.value.height / 2)
-    return relativeY * 6
-})
-const rotateY = computed(() => {
-    if (!containerRect.value) return 0
-    const centerX = containerRect.value.left + containerRect.value.width / 2
-    const relativeX = (mouseX.value - centerX) / (containerRect.value.width / 2)
-    return -relativeX * 6
-})
 
 // Background particles
 const particleStyle = (n: number) => {
