@@ -48,12 +48,10 @@ import { computed } from 'vue'
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 import { useGeneralStore } from '@/stores/generalDataStore'
-import { useContactStore } from '@/stores/contactStore'
 import SocialLinks from '../ui/SocialLinks.vue'
 
 const { t } = useI18n()
 const generalStore = useGeneralStore()
-const contactStore = useContactStore()
 
 const copyrightText = computed(() => {
     const currentYear = new Date().getFullYear()
