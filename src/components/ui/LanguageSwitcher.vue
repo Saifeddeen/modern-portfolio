@@ -3,8 +3,9 @@
         <div>
             <MenuButton
                 class="inline-flex justify-center items-center w-full rounded-md px-4 py-2 text-sm font-medium text-white-500 hover:bg-deep_navy-600 focus:outline-none">
+                <Icon icon="mdi:translate" class="me-1 h-4 w-4" aria-hidden="true" />
                 {{ appStore.locale.toUpperCase() }}
-                <Icon icon="lucide:chevron-down" class="-mr-1 ml-2 h-4 w-4" aria-hidden="true" />
+                <Icon icon="lucide:chevron-down" class="ms-1 h-4 w-4" aria-hidden="true" />
             </MenuButton>
         </div>
 

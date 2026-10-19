@@ -9,7 +9,7 @@
             </RouterLink>
 
             <!-- Desktop Menu -->
-            <ul class="hidden md:flex space-x-6 items-center">
+            <ul class="hidden md:flex items-center md:gap-6">
                 <li v-for="link in navLinks" :key="link.to">
                     <RouterLink :to="link.to" class="text-white-500 hover:text-cerulean-700 transition-colors">
                         {{ t(link.key) }}
